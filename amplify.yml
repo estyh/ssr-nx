@@ -1,0 +1,21 @@
+version: 1
+applications:
+  - frontend:
+      phases:
+        build:
+          commands:
+            # This step will build app with Nx framework
+            - cd ../../
+            - npm install
+            - npx nx run amplifyapp:build:production
+            # This step will build/update SSR resources(S3, Cloudfront, Lambda@Edge)
+            - cd apps/amplifyapp
+            - npm install
+      artifacts:
+        baseDirectory: ../../dist/apps/amplifyapp/.next
+        files:
+          - '**/*'
+      cache:
+        paths:
+            - node_modules/**/*
+    appRoot: apps/amplifyapp

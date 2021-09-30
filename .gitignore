@@ -37,3 +37,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+apps/amplifyapp/amplify/team-provider-info.json
